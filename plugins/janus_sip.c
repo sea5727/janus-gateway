@@ -2649,7 +2649,7 @@ static void *janus_sip_handler(void *data) {
 		json_t *request = json_object_get(root, "request");
 		const char *request_text = json_string_value(request);
 		json_t *result = NULL;
-
+		JANUS_LOG(LOG_DBG, "[janus_sip_handler] Pop!! message:%s %s/%d\n", request_text, __func__, __LINE__);
 		if(!strcasecmp(request_text, "register")) {
 			/* Send a REGISTER */
 			JANUS_VALIDATE_JSON_OBJECT(root, register_parameters,

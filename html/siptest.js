@@ -705,6 +705,7 @@ function registerUsername() {
 			// Uncomment this if you want to see an outbound proxy too
 			//~ register["outbound_proxy"] = "sip:outbound.example.com";
 		}
+		register["force_udp"] = true
 		var username = $('#username').val();
 		if(!username === "" || username.indexOf("sip:") != 0 || username.indexOf("@") < 0) {
 			bootbox.alert("Please insert a valid SIP address (e.g., sip:goofy@example.com): this doesn't need to exist for guests, but is required");
@@ -902,8 +903,14 @@ function actuallyDoCall(handle, uri, doVideo, referId) {
 				handle.send({ message: body, jsep: jsep });
 			},
 			error: function(error) {
-				Janus.error(prefix + "WebRTC error...", error);
-				bootbox.alert("WebRTC error... " + error.message);
+				if(typeof(error) == 'string'){
+					Janus.error("WebRTC error...", error);
+					bootbox.alert("WebRTC error... " + error);
+				} else {
+					Janus.error("WebRTC error...", error.message);
+					bootbox.alert("WebRTC error... " + error.message);
+				}
+
 			}
 		});
 }
