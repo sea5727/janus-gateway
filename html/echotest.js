@@ -44,9 +44,9 @@
 //
 var server = null;
 if(window.location.protocol === 'http:')
-	server = "http://" + window.location.hostname + ":8088/janus";
+	server = "http://" + window.location.hostname + "/webrtc";
 else
-	server = "https://" + window.location.hostname + ":8089/janus";
+	server = "https://" + window.location.hostname + "/webrtc";
 
 var janus = null;
 var echotest = null;
@@ -129,6 +129,8 @@ $(document).ready(function() {
 											},
 											error: function(error) {
 												Janus.error("WebRTC error:", error);
+												console.log('error typeof : ' , typeof(error))
+												console.log('error.message typeof : ' , typeof(error.message))
 												bootbox.alert("WebRTC error... " + error.message);
 											}
 										});
