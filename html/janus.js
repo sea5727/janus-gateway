@@ -1854,6 +1854,12 @@ function Janus(gatewayCallbacks) {
 					pluginHandle.iceState(config.pc.iceConnectionState);
 			};
 			config.pc.onicecandidate = function(event) {
+				try{
+					console.log('on IceCandidate:', event.candidate.candidate )
+				} catch (err) {
+					
+				}
+				
 				if (!event.candidate ||
 						(Janus.webRTCAdapter.browserDetails.browser === 'edge' && event.candidate.candidate.indexOf('endOfCandidates') > 0)) {
 					Janus.log("End of candidates.");
