@@ -254,7 +254,7 @@ media: {
 # internal libnice debugging, if needed.
 nat: {
 	# stun_server = "stun.l.google.com:19302"
-	stun_server = "j-din.iptime.org"
+	stun_server = "sanghotest.iptime.org"
 	stun_port = 3478
 	#nice_debug = false
 	#full_trickle = true
@@ -293,7 +293,7 @@ nat: {
 	# statically configured TURN server, and thus provide the address of the
 	# TURN server, the transport (udp/tcp/tls) to use, and a set of valid
 	# credentials to authenticate...
-	turn_server = "j-din.iptime.org"
+	turn_server = "sanghotest.iptime.org"
 	turn_port = 3478
 	#turn_type = "udp"
 	turn_user = "sanghotest"
