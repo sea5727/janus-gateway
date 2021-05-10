@@ -44,9 +44,9 @@
 //
 var server = null;
 if(window.location.protocol === 'http:')
-	server = "http://" + window.location.hostname + "/webrtc";
+	server = "http://" + window.location.hostname + ":8083/webrtc";
 else
-	server = "https://" + window.location.hostname + "/webrtc";
+	server = "https://" + window.location.hostname + ":8084/webrtc";
 
 var janus = null;
 var echotest = null;
@@ -76,6 +76,7 @@ $(document).ready(function() {
 				bootbox.alert("No WebRTC support... ");
 				return;
 			}
+			// alert('stun:j-din.iptime.org:3476')
 			// Create session
 			janus = new Janus(
 				{
@@ -89,6 +90,13 @@ $(document).ready(function() {
 					//		token: "mytoken",
 					//	or
 					//		apisecret: "serversecret",
+					iceServers: [
+						// {urls: "turn:sanghotest.iptime.org:3478", username: "sanghotest", credential: "sanghopwd"},
+						// {urls: "stun:sanghotest.iptime.org:3478"},
+						{urls: "turn:j-din.iptime.org", username: "sanghotest", credential: "sanghopwd"},
+						{urls: "stun:j-din.iptime.org"},
+						// {urls: "stun:stun.l.google.com:19302"},
+					],
 					success: function() {
 						// Attach to EchoTest plugin
 						janus.attach(

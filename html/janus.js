@@ -473,7 +473,12 @@ function Janus(gatewayCallbacks) {
 			Janus.log("Using REST API to contact Janus: " + server);
 		}
 	}
-	var iceServers = gatewayCallbacks.iceServers || [{urls: "stun:stun.l.google.com:19302"}];
+
+	var iceServers = gatewayCallbacks.iceServers
+	if(iceServers == null) {
+		var iceServers = [{urls: "stun:stun.l.google.com:19302"}];
+	}
+		
 	var iceTransportPolicy = gatewayCallbacks.iceTransportPolicy;
 	var bundlePolicy = gatewayCallbacks.bundlePolicy;
 	// Whether IPv6 candidates should be gathered
@@ -1854,10 +1859,13 @@ function Janus(gatewayCallbacks) {
 					pluginHandle.iceState(config.pc.iceConnectionState);
 			};
 			config.pc.onicecandidate = function(event) {
+				
+				
 				try{
-					console.log('on IceCandidate:', event.candidate.candidate )
+					// alert(`onicecandidate...${event.candidate.candidate}`)
+					// var cand_tmp = JSON.parse(event.candidate.candidate)
 				} catch (err) {
-					
+
 				}
 				
 				if (!event.candidate ||
