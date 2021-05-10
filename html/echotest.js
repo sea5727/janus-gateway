@@ -93,8 +93,8 @@ $(document).ready(function() {
 					iceServers: [
 						// {urls: "turn:sanghotest.iptime.org:3478", username: "sanghotest", credential: "sanghopwd"},
 						// {urls: "stun:sanghotest.iptime.org:3478"},
-						{urls: "turn:j-din.iptime.org", username: "sanghotest", credential: "sanghopwd"},
-						{urls: "stun:j-din.iptime.org"},
+						{urls: "turn:sanghotest.iptime.org", username: "sanghotest", credential: "sanghopwd"},
+						{urls: "stun:sanghotest.iptime.org"},
 						// {urls: "stun:stun.l.google.com:19302"},
 					],
 					success: function() {
